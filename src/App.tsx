@@ -1,12 +1,9 @@
 import React from 'react';
+import Home from './pages'
 
 function App() {
   return (
-    <div className="mt-4 md:mt-12">
-      <p className="font-bold">
-          testing
-      </p>
-    </div>
+   <Home />
   );
 }
 
