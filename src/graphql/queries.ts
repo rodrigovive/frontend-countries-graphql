@@ -59,13 +59,10 @@ export const listCountries = gql(`query ListCountries(
 }
 `)
 
-export const listRegions = gql(`query ListRegions(
-  $region: String
-){
-  Region(filter: {
-  	name_contains: $region
-  }){
+export const listRegions = gql(`query listRegions{
+  RegionalBloc {
     _id
+    acronym
     name
   }
 }
@@ -82,3 +79,29 @@ export const listLanguages = gql(`query ListLanguage(
   }
 }
 `)
+
+export const getCountry = gql(`query GetCountry($id: String){
+  Country(_id: $id) {
+    _id
+      alpha2Code
+      alpha3Code
+      area
+      capital
+      populationDensity
+      demonym
+      name
+      nativeName
+      numericCode
+      population
+      currencies {
+        symbol
+        name
+      }
+      officialLanguages {
+        name
+      }
+      regionalBlocs {
+        name
+      }
+  }
+}`)

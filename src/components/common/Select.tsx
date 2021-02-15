@@ -16,9 +16,13 @@ interface IProps {
     initialValue?: string;
 }
 
-const Select = ({id, options, className, onChange, initialValue = "", name, value}: IProps ) => {
+const Select : React.FunctionComponent<IProps> = ({id, options, className, onChange, initialValue = "", name, value}: IProps ) => {
 
-    return <select value={value} name={name} onChange={onChange}  id={id} className={clsx("px-2 md:px-8 form-select block w-full text-sm leading-5 border border-gray-300 rounded-md shadow-sm", className)}>
+    return <select
+        value={value}
+        name={name} onChange={onChange}
+        id={id}
+        className={clsx("px-2 md:px-8 form-select block w-full text-sm leading-5 border border-gray-300 rounded-md shadow-sm", className)}>
         <option value={''}>{initialValue}</option>
         {options.map((option) => (
             <option key={option.value} value={option.value}>{option.name}</option>

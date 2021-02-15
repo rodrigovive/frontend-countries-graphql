@@ -1,8 +1,8 @@
 import { useQuery } from "react-query";
-import {Region,ListRegionsQueryVariables} from "../../graphql/types";
+import { ListRegionsQueryVariables, RegionalBloc} from "../../graphql/types";
 import RegionController from "../../controllers/RegionController";
 
-const getRegions = async ({ }: ListRegionsQueryVariables): Promise<Region[]> => {
+const getRegions = async ({ }: ListRegionsQueryVariables): Promise<RegionalBloc[]> => {
     try {
         return RegionController.listRegions({})
     } catch (e) {
@@ -11,5 +11,5 @@ const getRegions = async ({ }: ListRegionsQueryVariables): Promise<Region[]> => 
 };
 
 export const useListRegions = ( {}: ListRegionsQueryVariables) => {
-    return useQuery<Region[], any>(["regions"], (_key) => getRegions({}), { enabled: false });
+    return useQuery<RegionalBloc[], any>(["regions"], (_key) => getRegions({}), { enabled: false });
 }

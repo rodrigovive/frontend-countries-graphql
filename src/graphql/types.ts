@@ -1369,16 +1369,14 @@ export type ListCountriesQuery = (
   )>>> }
 );
 
-export type ListRegionsQueryVariables = Exact<{
-  region?: Maybe<Scalars['String']>;
-}>;
+export type ListRegionsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type ListRegionsQuery = (
   { __typename?: 'Query' }
-  & { Region?: Maybe<Array<Maybe<(
-    { __typename?: 'Region' }
-    & Pick<Region, '_id' | 'name'>
+  & { RegionalBloc?: Maybe<Array<Maybe<(
+    { __typename?: 'RegionalBloc' }
+    & Pick<RegionalBloc, '_id' | 'acronym' | 'name'>
   )>>> }
 );
 
@@ -1392,5 +1390,28 @@ export type ListLanguageQuery = (
   & { Language?: Maybe<Array<Maybe<(
     { __typename?: 'Language' }
     & Pick<Language, '_id' | 'name'>
+  )>>> }
+);
+
+export type GetCountryQueryVariables = Exact<{
+  id?: Maybe<Scalars['String']>;
+}>;
+
+
+export type GetCountryQuery = (
+  { __typename?: 'Query' }
+  & { Country?: Maybe<Array<Maybe<(
+    { __typename?: 'Country' }
+    & Pick<Country, '_id' | 'alpha2Code' | 'alpha3Code' | 'area' | 'capital' | 'populationDensity' | 'demonym' | 'name' | 'nativeName' | 'numericCode' | 'population'>
+    & { currencies?: Maybe<Array<Maybe<(
+      { __typename?: 'Currency' }
+      & Pick<Currency, 'symbol' | 'name'>
+    )>>>, officialLanguages?: Maybe<Array<Maybe<(
+      { __typename?: 'Language' }
+      & Pick<Language, 'name'>
+    )>>>, regionalBlocs?: Maybe<Array<Maybe<(
+      { __typename?: 'RegionalBloc' }
+      & Pick<RegionalBloc, 'name'>
+    )>>> }
   )>>> }
 );

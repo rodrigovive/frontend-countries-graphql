@@ -13,10 +13,16 @@ const Countries = () => {
     const [searchRegion, setSearchRegion] = useState<string>('')
     const [searchLanguage, setSearchLanguage] = useState<string>('')
     const handleChangeName = useCallback((e)=>{
+
         setSearchName(upperFirst(e.target.value))
-    },[setSearchName])
+        if(e.target.value.length === 2) {
+            setSearchAlphaCode(e.target.value.toUpperCase())
+        }else {
+            setSearchAlphaCode('')
+        }
+    },[setSearchName, setSearchAlphaCode])
     const {data: countries, isLoading, refetch} = useListCountries(
-        {limit: 10, name: searchName, currency: searchCurrency, region: searchRegion, language: searchLanguage}
+        {limit: 10, name: Boolean(searchAlphaCode) ? '' : searchName, currency: searchCurrency, region: searchRegion, language: searchLanguage, alpha2Code: searchAlphaCode}
         )
     useEffect(()=>{
         refetch()

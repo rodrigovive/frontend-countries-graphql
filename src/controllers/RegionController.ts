@@ -1,11 +1,11 @@
 import  {fetchGraphql} from "../clients/HttpClient";
 import { listRegions } from '../graphql/queries'
-import { ListRegionsQueryVariables, Region} from "../graphql/types";
+import {ListRegionsQueryVariables, RegionalBloc} from "../graphql/types";
 
 class RegionController {
-    static listRegions = async (variables?: ListRegionsQueryVariables): Promise<Region[]> => {
+    static listRegions = async (variables?: ListRegionsQueryVariables): Promise<RegionalBloc[]> => {
         const response = await fetchGraphql(listRegions, variables)
-        return response.data.data.Region
+        return response.data.data.RegionalBloc
     }
 }
 
