@@ -1337,17 +1337,17 @@ export type ListCurrenciesQuery = (
   { __typename?: 'Query' }
   & { Currency?: Maybe<Array<Maybe<(
     { __typename?: 'Currency' }
-    & Pick<Currency, '_id' | 'code' | 'name' | 'symbol'>
-    & { countries?: Maybe<Array<Maybe<(
-      { __typename?: 'Country' }
-      & Pick<Country, '_id' | 'alpha2Code' | 'alpha3Code' | 'area' | 'capital' | 'populationDensity' | 'demonym' | 'name' | 'nativeName' | 'numericCode' | 'population'>
-    )>>> }
+    & Pick<Currency, '_id' | 'name' | 'symbol'>
   )>>> }
 );
 
 export type ListCountriesQueryVariables = Exact<{
   name?: Maybe<Scalars['String']>;
   alpha2Code?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  currency?: Maybe<Scalars['String']>;
+  language?: Maybe<Scalars['String']>;
+  region?: Maybe<Scalars['String']>;
 }>;
 
 
@@ -1356,6 +1356,16 @@ export type ListCountriesQuery = (
   & { Country?: Maybe<Array<Maybe<(
     { __typename?: 'Country' }
     & Pick<Country, '_id' | 'alpha2Code' | 'alpha3Code' | 'area' | 'capital' | 'populationDensity' | 'demonym' | 'name' | 'nativeName' | 'numericCode' | 'population'>
+    & { currencies?: Maybe<Array<Maybe<(
+      { __typename?: 'Currency' }
+      & Pick<Currency, 'symbol' | 'name'>
+    )>>>, officialLanguages?: Maybe<Array<Maybe<(
+      { __typename?: 'Language' }
+      & Pick<Language, 'name'>
+    )>>>, regionalBlocs?: Maybe<Array<Maybe<(
+      { __typename?: 'RegionalBloc' }
+      & Pick<RegionalBloc, 'name'>
+    )>>> }
   )>>> }
 );
 
@@ -1369,13 +1379,6 @@ export type ListRegionsQuery = (
   & { Region?: Maybe<Array<Maybe<(
     { __typename?: 'Region' }
     & Pick<Region, '_id' | 'name'>
-    & { subregions?: Maybe<Array<Maybe<(
-      { __typename?: 'Subregion' }
-      & { countries?: Maybe<Array<Maybe<(
-        { __typename?: 'Country' }
-        & Pick<Country, '_id' | 'alpha2Code' | 'alpha3Code' | 'area' | 'capital' | 'populationDensity' | 'demonym' | 'name' | 'nativeName' | 'numericCode' | 'population'>
-      )>>> }
-    )>>> }
   )>>> }
 );
 
@@ -1388,10 +1391,6 @@ export type ListLanguageQuery = (
   { __typename?: 'Query' }
   & { Language?: Maybe<Array<Maybe<(
     { __typename?: 'Language' }
-    & Pick<Language, '_id' | 'iso639_1' | 'iso639_2' | 'name' | 'nativeName'>
-    & { countries?: Maybe<Array<Maybe<(
-      { __typename?: 'Country' }
-      & Pick<Country, '_id' | 'alpha2Code' | 'alpha3Code' | 'area' | 'capital' | 'populationDensity' | 'demonym' | 'name' | 'nativeName' | 'numericCode' | 'population'>
-    )>>> }
+    & Pick<Language, '_id' | 'name'>
   )>>> }
 );

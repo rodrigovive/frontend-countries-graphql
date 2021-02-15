@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@tailwindcss/aspect-ratio": "^0.2.0",
+    "@tailwindcss/forms": "^0.2.1",
+    "@tailwindcss/typography": "^0.4.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -11,6 +14,8 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "axios": "^0.21.1",
+    "clsx": "^1.1.1",
+    "lodash": "^4.17.20",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-query": "^3.9.6",
@@ -25,7 +30,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "generate": "graphql-codegen  --require dotenv/config --config codegen.js dotenv_config_path=.env",
-    "generate:watch": "yarn generate --watch"
+    "generate:watch": "yarn generate --watch",
+    "postinstall": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -52,11 +58,24 @@
     "@graphql-codegen/typescript-operations": "^1.17.14",
     "@graphql-codegen/typescript-react-apollo": "^2.2.1",
     "@tailwindcss/postcss7-compat": "^2.0.3",
-    "autoprefixer": "^9.8.6",
+    "@types/lodash": "^4.14.168",
+    "autoprefixer": "^9",
     "dotenv": "^8.2.0",
     "graphql": "^15.5.0",
-    "postcss": "^7.0.35",
+    "husky": "^5.0.9",
+    "lint-staged": ">=10",
+    "pinst": "^2.1.4",
+    "postcss": "^7",
     "postcss-cli": "7.1.2",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.3"
+    "prettier": "^2.2.1",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,md,tx,tsx}": "prettier --write"
   }
 }

@@ -1,11 +1,11 @@
 import  {fetchGraphql} from "../clients/HttpClient";
 import { listCurrencies } from '../graphql/queries'
-import {_CurrencyFilter} from "../graphql/types";
+import { Currency, ListCurrenciesQueryVariables} from "../graphql/types";
 
 class CurrencyController {
-    static listCurrencies = async (filters?: _CurrencyFilter) => {
-        const response = await fetchGraphql(listCurrencies, filters)
-        return response.data
+    static listCurrencies = async (variables?: ListCurrenciesQueryVariables): Promise<Currency[]> => {
+        const response = await fetchGraphql(listCurrencies, variables)
+        return response.data.data.Currency
     }
 }
 

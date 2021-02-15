@@ -1,11 +1,11 @@
 import  {fetchGraphql} from "../clients/HttpClient";
 import { listLanguages } from '../graphql/queries'
-import {_LanguageFilter} from "../graphql/types";
+import { Language, ListLanguageQueryVariables} from "../graphql/types";
 
 class LanguageController {
-    static listLanguages = async (filters?: _LanguageFilter) => {
-        const response = await fetchGraphql(listLanguages, filters)
-        return response.data
+    static listLanguages = async (variables?: ListLanguageQueryVariables): Promise<Language[]> => {
+        const response = await fetchGraphql(listLanguages, variables)
+        return response.data.data.Language
     }
 }
 
